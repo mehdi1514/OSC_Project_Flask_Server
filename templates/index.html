@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A*</title>
+</head>
+<body>
+    Nearest Hospital: {{nearest_hospital}}
+    Path Length: {{nearest_length}}
+    <table border="1px">
+        {% for i in range(20) %}
+            <tr>
+                {% for j in range(20) %}
+                    {% if(maze[i][j] == 1) %}
+                    <td style="background-color: gray; padding: 10px;">
+                        {{i}},{{j}}
+                    </td>
+                    {% elif(i==start[0] and j==start[1]) %}
+                    <td style="background-color: green; padding: 10px;">
+                        {{i}},{{j}}
+                    </td>
+                    {% elif(i==end1[0] and j==end1[1] or i==end2[0] and j==end2[1] or i==end3[0] and j==end3[1]) %}
+                    <td style="background-color: red; padding: 10px;">
+                        {{i}},{{j}}
+                    </td>
+                    {% elif((i,j) in path1 or (i,j) in path2 or (i,j) in path3) %}
+                    <td style="background-color: yellow; padding: 10px;">
+                        {{i}},{{j}}
+                    </td>
+                    {% else %}
+                    <td style="padding: 10px;">
+                        {{i}},{{j}}
+                    </td>
+                    {% endif %}
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
